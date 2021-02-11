@@ -5,7 +5,7 @@ const { Workout } = require("../models")
 // Get all workout
 router.get("/api/workouts", (req, res) => {
 
-    Workout.find({}).then((workout => {
+    Workout.find().then((workout => {
 
         res.json(workout);
 
@@ -19,16 +19,21 @@ router.get("/api/workouts", (req, res) => {
 // Add workout
 router.put("/api/workouts/:id", (req, res) => {
     const newExercise = req.body;
-    
-    console.log("newExercise: " + newExercise);
+
+    // console.log("newExercise: " + res.json(newExercise));
 
     Workout.findOneAndUpdate(req.params.id, {
         $push: {
             exercises: newExercise
         }
-    }).then((workout => {
+    }, {
+        new: true
+        
+    }).then((workout) => {
+
         res.json(workout);
-    })).catch((err) => {
+
+    }).catch((err) => {
         res.status(500).json(err);
     })
 });
@@ -36,11 +41,17 @@ router.put("/api/workouts/:id", (req, res) => {
 // Create workout
 router.post("/api/workouts", (req, res) => {
 
-    Workout.create(req.body).then((workout => {
+    // console.log("Create: " + [req.body])
+    // const newWorkout = {
+    //     day: Date.now(),
+    //     exercise: [req.body]
+    // }
+
+    Workout.create(req.body).then((workout) => {
 
         res.json(workout);
 
-    })).catch((err) => {
+    }).catch((err) => {
 
         res.status(500).json(err);
     })
@@ -48,11 +59,11 @@ router.post("/api/workouts", (req, res) => {
 
 // Get all range
 router.get("/api/workouts/range", (req, res) => {
-    Workout.find({}).then((workout => {
+    Workout.find({}).then((workout) => {
 
         res.json(workout);
 
-    })).catch((err) => {
+    }).catch((err) => {
 
         res.status(500).json(err);
 
