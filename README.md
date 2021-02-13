@@ -21,7 +21,7 @@ As a user, I want to be able to view create and track daily workouts. I want to 
 * Heroku
 
 ## Link
-* [Deployed Link](In-process)
+* [Deployed Link](https://tn-fitness-tracker.herokuapp.com/)
 * [Repo Link](https://github.com/trucn0215/TN-Fitness-Tracker)
 
 ## Screenshot
