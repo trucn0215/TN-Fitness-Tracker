@@ -70,17 +70,4 @@ router.get("/api/workouts/range", (req, res) => {
     })
 });
 
-// Create the range
-// router.post("/api/workouts/range", (req, res) => {
-//     Workout.create({}).then((workout) => {
-
-//         res.json(workout);
-
-//     }).catch((err) => {
-
-//         res.status(500).json(err);
-
-//     })
-// });
-
 module.exports = router;
